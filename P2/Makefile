@@ -1,5 +1,7 @@
 # Makefile
 
+# Mihael Scofield de Azevedo - GRR20182621 - msa18
+
 CC = gcc
 CFLAGS = -Wall -g -Wextra # Flags para compilação.
 DEBUGFLAGS = -DDEBUG
