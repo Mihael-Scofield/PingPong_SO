@@ -1,0 +1,28 @@
+# Makefile
+
+# Mihael Scofield de Azevedo - GRR20182621 - msa18
+
+CC = gcc
+CFLAGS = -Wall -g -Wextra # Flags para compilação.
+DEBUGFLAGS = -DDEBUG
+# LDLIBS = -lSDL2 -lSDL2_gfx -lm
+
+arq = ppos_core.c queue.c pingpong-dispatcher.c
+objects = ppos_core.o queue.o pingpong-dispatcher.c
+
+# Regra default
+all: Main
+
+# Remove arquivos temporários
+clean:
+	-rm -f *~ *.o
+
+# Remove tudo o que não for código-fonte original
+purge: clean
+	-rm -f Main
+
+debug: $(objects)
+	$(CC) $(CFLAGS) $(arq) $(DEBUGFLAGS)
+
+Main: $(objects)
+	$(CC) $(CFLAGS) $(arq)
