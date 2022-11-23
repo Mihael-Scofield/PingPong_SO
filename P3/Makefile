@@ -7,8 +7,8 @@ CFLAGS = -Wall -g -Wextra # Flags para compilação.
 DEBUGFLAGS = -DDEBUG
 # LDLIBS = -lSDL2 -lSDL2_gfx -lm
 
-arq = ppos_core.c pingpong-tasks1.c
-objects = ppos_core.o pingpong-tasks1.o
+arq = ppos_core.c queue.c pingpong-dispatcher.c
+objects = ppos_core.o queue.o pingpong-dispatcher.c
 
 # Regra default
 all: Main

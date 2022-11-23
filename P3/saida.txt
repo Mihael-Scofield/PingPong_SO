@@ -1,0 +1,273 @@
+main: inicio
+task_create: Iniciando criacao de nova tarefa. 
+task_create: Esta criada a tarefa de ID: 1. 
+task_create: Iniciando criacao de nova tarefa. 
+task_create: Numero de tarefas 1 na Fila de Prontas.
+task_create: Esta criada a tarefa de ID: 2. 
+task_create: Iniciando criacao de nova tarefa. 
+task_create: Numero de tarefas 2 na Fila de Prontas.
+task_create: Esta criada a tarefa de ID: 3. 
+task_create: Iniciando criacao de nova tarefa. 
+task_create: Numero de tarefas 3 na Fila de Prontas.
+task_create: Esta criada a tarefa de ID: 4. 
+task_create: Iniciando criacao de nova tarefa. 
+task_create: Numero de tarefas 4 na Fila de Prontas.
+task_create: Esta criada a tarefa de ID: 5. 
+task_create: Iniciando criacao de nova tarefa. 
+task_create: Numero de tarefas 5 na Fila de Prontas.
+task_create: Esta criada a tarefa de ID: 6. 
+task_yield: Yield solicitado pela tarefa 0. 
+task_switch: Trocando as seguintes tarefas: 0 ---> 1. 
+dispatcher_body: Inicializando o Dispatcher. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 2. 
+    Pang: inicio
+    Pang: 0
+task_yield: Yield solicitado pela tarefa 2. 
+task_switch: Trocando as seguintes tarefas: 2 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 3. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 3. 
+        Peng: inicio
+        Peng: 0
+task_yield: Yield solicitado pela tarefa 3. 
+task_switch: Trocando as seguintes tarefas: 3 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 4. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 4. 
+            Ping: inicio
+            Ping: 0
+task_yield: Yield solicitado pela tarefa 4. 
+task_switch: Trocando as seguintes tarefas: 4 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 5. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 5. 
+                Pong: inicio
+                Pong: 0
+task_yield: Yield solicitado pela tarefa 5. 
+task_switch: Trocando as seguintes tarefas: 5 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 6. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 6. 
+                    Pung: inicio
+                    Pung: 0
+task_yield: Yield solicitado pela tarefa 6. 
+task_switch: Trocando as seguintes tarefas: 6 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 2. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 2. 
+task_switch: Troca realizada entre 2 ---> 2. 
+    Pang: 1
+task_yield: Yield solicitado pela tarefa 2. 
+task_switch: Trocando as seguintes tarefas: 2 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 3. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 3. 
+task_switch: Troca realizada entre 3 ---> 3. 
+        Peng: 1
+task_yield: Yield solicitado pela tarefa 3. 
+task_switch: Trocando as seguintes tarefas: 3 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 4. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 4. 
+task_switch: Troca realizada entre 4 ---> 4. 
+            Ping: 1
+task_yield: Yield solicitado pela tarefa 4. 
+task_switch: Trocando as seguintes tarefas: 4 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 5. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 5. 
+task_switch: Troca realizada entre 5 ---> 5. 
+                Pong: 1
+task_yield: Yield solicitado pela tarefa 5. 
+task_switch: Trocando as seguintes tarefas: 5 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 6. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 6. 
+task_switch: Troca realizada entre 6 ---> 6. 
+                    Pung: 1
+task_yield: Yield solicitado pela tarefa 6. 
+task_switch: Trocando as seguintes tarefas: 6 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 2. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 2. 
+task_switch: Troca realizada entre 2 ---> 2. 
+    Pang: 2
+task_yield: Yield solicitado pela tarefa 2. 
+task_switch: Trocando as seguintes tarefas: 2 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 3. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 3. 
+task_switch: Troca realizada entre 3 ---> 3. 
+        Peng: 2
+task_yield: Yield solicitado pela tarefa 3. 
+task_switch: Trocando as seguintes tarefas: 3 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 4. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 4. 
+task_switch: Troca realizada entre 4 ---> 4. 
+            Ping: 2
+task_yield: Yield solicitado pela tarefa 4. 
+task_switch: Trocando as seguintes tarefas: 4 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 5. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 5. 
+task_switch: Troca realizada entre 5 ---> 5. 
+                Pong: 2
+task_yield: Yield solicitado pela tarefa 5. 
+task_switch: Trocando as seguintes tarefas: 5 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 6. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 6. 
+task_switch: Troca realizada entre 6 ---> 6. 
+                    Pung: 2
+task_yield: Yield solicitado pela tarefa 6. 
+task_switch: Trocando as seguintes tarefas: 6 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 2. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 2. 
+task_switch: Troca realizada entre 2 ---> 2. 
+    Pang: 3
+task_yield: Yield solicitado pela tarefa 2. 
+task_switch: Trocando as seguintes tarefas: 2 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 3. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 3. 
+task_switch: Troca realizada entre 3 ---> 3. 
+        Peng: 3
+task_yield: Yield solicitado pela tarefa 3. 
+task_switch: Trocando as seguintes tarefas: 3 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 4. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 4. 
+task_switch: Troca realizada entre 4 ---> 4. 
+            Ping: 3
+task_yield: Yield solicitado pela tarefa 4. 
+task_switch: Trocando as seguintes tarefas: 4 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 5. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 5. 
+task_switch: Troca realizada entre 5 ---> 5. 
+                Pong: 3
+task_yield: Yield solicitado pela tarefa 5. 
+task_switch: Trocando as seguintes tarefas: 5 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 6. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 6. 
+task_switch: Troca realizada entre 6 ---> 6. 
+                    Pung: 3
+task_yield: Yield solicitado pela tarefa 6. 
+task_switch: Trocando as seguintes tarefas: 6 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 2. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 2. 
+task_switch: Troca realizada entre 2 ---> 2. 
+    Pang: 4
+task_yield: Yield solicitado pela tarefa 2. 
+task_switch: Trocando as seguintes tarefas: 2 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 3. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 3. 
+task_switch: Troca realizada entre 3 ---> 3. 
+        Peng: 4
+task_yield: Yield solicitado pela tarefa 3. 
+task_switch: Trocando as seguintes tarefas: 3 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 4. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 4. 
+task_switch: Troca realizada entre 4 ---> 4. 
+            Ping: 4
+task_yield: Yield solicitado pela tarefa 4. 
+task_switch: Trocando as seguintes tarefas: 4 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 5. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 5. 
+task_switch: Troca realizada entre 5 ---> 5. 
+                Pong: 4
+task_yield: Yield solicitado pela tarefa 5. 
+task_switch: Trocando as seguintes tarefas: 5 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 6. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 6. 
+task_switch: Troca realizada entre 6 ---> 6. 
+                    Pung: 4
+task_yield: Yield solicitado pela tarefa 6. 
+task_switch: Trocando as seguintes tarefas: 6 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 2. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 2. 
+task_switch: Troca realizada entre 2 ---> 2. 
+    Pang: fim
+task_exit: Terminando tarefa: 2. 
+task_switch: Trocando as seguintes tarefas: 2 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+task_kill: Matando a tarefa 2. 
+task_kill: Tarefa 2 esta morta. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 4. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 4. 
+task_switch: Troca realizada entre 4 ---> 4. 
+            Ping: fim
+task_exit: Terminando tarefa: 4. 
+task_switch: Trocando as seguintes tarefas: 4 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+task_kill: Matando a tarefa 4. 
+task_kill: Tarefa 4 esta morta. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 6. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 6. 
+task_switch: Troca realizada entre 6 ---> 6. 
+                    Pung: fim
+task_exit: Terminando tarefa: 6. 
+task_switch: Trocando as seguintes tarefas: 6 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+task_kill: Matando a tarefa 6. 
+task_kill: Tarefa 6 esta morta. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 5. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 5. 
+task_switch: Troca realizada entre 5 ---> 5. 
+                Pong: fim
+task_exit: Terminando tarefa: 5. 
+task_switch: Trocando as seguintes tarefas: 5 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+task_kill: Matando a tarefa 5. 
+task_kill: Tarefa 5 esta morta. 
+scheduler: Scheduler pegando o proximo da fila de tarefas no padrão FCFS. 
+scheduler: Tarefa selecionada: 3. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 3. 
+task_switch: Troca realizada entre 3 ---> 3. 
+        Peng: fim
+task_exit: Terminando tarefa: 3. 
+task_switch: Trocando as seguintes tarefas: 3 ---> 1. 
+task_switch: Troca realizada entre 1 ---> 1. 
+task_kill: Matando a tarefa 3. 
+task_kill: Tarefa 3 esta morta. 
+dispatcher_body: Encerrando o Dispatcher. 
+task_switch: Trocando as seguintes tarefas: 1 ---> 0. 
+task_switch: Troca realizada entre 0 ---> 0. 
+main: fim
