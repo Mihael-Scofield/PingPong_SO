@@ -9,18 +9,18 @@
 
 #define STACKSIZE 64*1024	/* tamanho de pilha das threads */
 
-task_t Main, *tarefaAtual;
 int numTask;
+task_t Main, *tarefaAtual;
 
 // Inicializa o sistema operacional; deve ser chamada no inicio do main()
 void ppos_init () {
     /* desativa o buffer da saida padrao (stdout), usado pela função printf */
+    /* linha necessaria por definicao */
     setvbuf (stdout, 0, _IONBF, 0) ;
 
     /* Preparacao de variaveis globais do SO */
-    numTask = 0;
-    numTask++;
     Main.id = 0;
+    numTask = 1;    
     tarefaAtual = (task_t *) &(Main);
 
     return;
@@ -37,25 +37,23 @@ int task_create (task_t *task,			        // descritor da nova tarefa
     #endif
 
     /* "Ajeitando" a nova task dentro da Stack */
+    /* linhas necessarias como visto em aula   */
     char *stack; // Posso recriar a stack pois o ponteiro dela estara na task atual
-    getcontext( & (task->context) );
-
-    stack = malloc (STACKSIZE) ;
+    stack = malloc (STACKSIZE);
     if (stack) {
-       (task->context).uc_stack.ss_sp = stack ;
-       (task->context).uc_stack.ss_size = STACKSIZE ;
-       (task->context).uc_stack.ss_flags = 0 ;
-       (task->context).uc_link = 0 ;
+       (task->context).uc_stack.ss_sp = stack;
+       (task->context).uc_stack.ss_size = STACKSIZE;
+       (task->context).uc_stack.ss_flags = 0;
+       (task->context).uc_link = 0;
     }
     else {
-       perror ("Erro na criação da pilha: ") ;
-       exit (1) ;
+       perror ("Erro na criação da pilha. \n") ;
+       exit (1);
     }    
 
-
     /* Tratamento dos parametros */
-    getcontext (&(task->context));
-    makecontext ( &(task->context), (void *) (*(*start_func)), 1, arg ); // Preparacao do Body da task
+    getcontext( & (task->context) );
+    makecontext( & (task->context), (void *) ( * (*start_func) ), 1, arg); // Preparacao do Body da task, como visto em aula
     
     /* Identificacao de Task */
     task->id = numTask;
@@ -63,18 +61,18 @@ int task_create (task_t *task,			        // descritor da nova tarefa
 
     /* Tratamento de saida */
     #ifdef DEBUG
-        printf("task_create: Criada a tarefa: %d. \n", task->id);
+        printf("task_create: Esta criada a tarefa de ID: %d. \n", task->id);
     #endif
     return task->id;
 }
 
 // Termina a tarefa corrente, indicando um valor de status encerramento
 void task_exit (int exit_code) {
+    exit_code++; // APENAS PARA EVITAR WARNING, VARIAVEL SERA USADA NO FUTURO
+
     #ifdef DEBUG
         printf("task_exit: Terminando tarefa: %d. \n", tarefaAtual->id);
-    #endif 
-
-    exit_code++; // APENAS PARA EVITAR WARNING
+    #endif
 
     task_switch(&(Main));
     return;
@@ -91,10 +89,10 @@ int task_switch (task_t *task) {
     #endif 
 
     /* Troca propriamente dita */
-    int erro;
-    erro = swapcontext ( ( & (tarefaAnterior->context)), ( & (task->context)) );
-    if (erro == -1) {
-        fprintf(stderr, "task_switch: Erro na troca de contexto. \n");
+    int error;
+    error = swapcontext ( ( & (tarefaAnterior->context)), ( & (task->context)) );
+    if (error == -1) {
+        perror("task_switch: Erro na troca de contexto. \n");
         return -1;
     }
 
