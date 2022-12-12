@@ -8,9 +8,9 @@ DEBUGFLAGS = -DDEBUG
 EXENAMEFLAGS = -o
 # LDLIBS = -lSDL2 -lSDL2_gfx -lm
 
-arq = ppos_core.c queue.c pingpong-scheduler.c
-objects = ppos_core.o queue.o pingpong-scheduler.c
-exename = pingpong-scheduler
+arq = ppos_core.c queue.c pingpong-preempcao.c
+objects = ppos_core.o queue.o pingpong-preempcao.c
+exename = exe-pingpong-preempcao
 
 # Regra default
 all: Main

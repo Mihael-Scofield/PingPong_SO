@@ -91,8 +91,8 @@ int task_create (task_t *task,			        // descritor da nova tarefa
 
 // Termina a tarefa corrente, indicando um valor de status encerramento
 void task_exit (int exit_code) {
-    // Para evitar erros em relacao ao contador na troca de contexto
-    estaPreemptando = 0;
+    // // Para evitar erros em relacao ao contador na troca de contexto
+    // estaPreemptando = 0;
 
     #ifdef DEBUG
         printf("task_exit: Terminando tarefa: %d. \n", tarefaAtual->id);
@@ -126,9 +126,9 @@ int task_switch (task_t *task) {
     }
 
     /* Tratamento de saida */
-    #ifdef DEBUG
-        printf("task_switch: Troca realizada entre %d ---> %d. \n", tarefaAnterior->id, tarefaAtual->id);
-    #endif
+    // #ifdef DEBUG
+    //     printf("task_switch: Troca realizada entre %d ---> %d. \n", tarefaAnterior->id, tarefaAtual->id);
+    // #endif
     return 0;
 }
 
@@ -249,7 +249,7 @@ void dispatcher_body () {
         // escalonador escolheu uma tarefa?      
         // se próxima <> NULO então
         if (tarefaAtualUsuario != NULL) {
-            tarefaAtualUsuario->quantum = 20;
+            tarefaAtualUsuario->quantum = 20; // Quantum definido em 20 por especificacao
             estaPreemptando = -1;
             // transfere controle para a próxima tarefa
             // task_switch (próxima)
@@ -281,60 +281,22 @@ void dispatcher_body () {
    
    // task_exit(0);
    task_switch(&tarefaMain); // Garante o retorno para a main, acabando o codigo
+   return;
 }
 
-
-// Inicializa o sistema operacional; deve ser chamada no inicio do main()
-void ppos_init () { 
-    #ifdef DEBUG
-        printf("ppos_init: Hello World! By: Ping Pong SO / V.p4 - Mihael Scofield de Azevedo");                
-    #endif
-
-    /* desativa o buffer da saida padrao (stdout), usado pela função printf */
-    /* linha necessaria por definicao */
-    setvbuf (stdout, 0, _IONBF, 0) ;
-
-    /* Preparacao de variaveis globais do SO */
-    tarefaMain.id = 0; 
-    tarefaAtual = (task_t *) &(tarefaMain);
-    tarefaMain.ehTarefaUsuario = -1;
-
-    maiorID = 1; // Main seria a ID = 0, enquanto o Dispatcher ID = 1
-    qntTarefasUsuario = 0;
-
-    task_create(&tarefaDispatcher, dispatcher_body, NULL);
-
-    /* Temporizador */
-    #ifdef DEBUG
-        printf ("ppos_init: Iniciando o temporizador do SO.\n");
-    #endif
-
-    /* CODIGO RETIRADO DO EXEMPLO PASSADO */
-
-    // registra a ação para o sinal de timer SIGALRM
-    action.sa_handler = tratadorTicks;
-    sigemptyset (&action.sa_mask) ;
-    action.sa_flags = 0 ;
-    if (sigaction (SIGALRM, &action, 0) < 0)
-    {
-        perror ("Erro em sigaction: ") ;
-        exit (1) ;
+void tratadorTemporizador() {
+    if (estaPreemptando == -1) { // Guarda de segurança para evitar preempcoes indevidas
+        estaPreemptando = 0; // Agora sim queremos preemptar
+        if (tarefaAtual->ehTarefaUsuario == 0) { // Mais uma guarda de seguranca para nao preemptarmos tarefas erradas
+            if (tarefaAtual->quantum == 0) { // Chegou o momento da preemptacao da task
+                task_yield(); // Retorna controle ao dispatcher
+                return;
+            }
+            tarefaAtual->quantum--; // Caminha em direcao ao 0
+            estaPreemptando = -1;
+            return;
+        }
     }
-
-    // ajusta valores do temporizador
-    timer.it_value.tv_usec = 100;          // primeiro disparo, em micro-segundos
-    timer.it_value.tv_sec  = 0;            // primeiro disparo, em segundos
-    timer.it_interval.tv_usec = 1000;      // disparos subsequentes, em micro-segundos
-    timer.it_interval.tv_sec  = 0;         // disparos subsequentes, em segundos
-
-    // arma o temporizador ITIMER_REAL (vide man setitimer)
-    if (setitimer (ITIMER_REAL, &timer, 0) < 0)
-    {
-        perror ("Erro em setitimer: ") ;
-        exit (1) ;
-    }    
-    
-    /* FIM DO CODIGO RETIRADO DO EXEMPLO PASSADO */
 
     return;
 }
@@ -385,6 +347,57 @@ int task_getprio (task_t *task) {
     return task->prioridadeEstatica;
 }
 
-void tratadorTicks() {
+// Inicializa o sistema operacional; deve ser chamada no inicio do main()
+void ppos_init () { 
+    #ifdef DEBUG
+        printf("ppos_init: Hello World! By: Ping Pong SO / V.p4 - Mihael Scofield de Azevedo");                
+    #endif
 
+    /* desativa o buffer da saida padrao (stdout), usado pela função printf */
+    /* linha necessaria por definicao */
+    setvbuf (stdout, 0, _IONBF, 0) ;
+
+    /* Preparacao de variaveis globais do SO */
+    tarefaMain.id = 0; 
+    tarefaAtual = (task_t *) &(tarefaMain);
+    tarefaMain.ehTarefaUsuario = -1;
+
+    maiorID = 1; // Main seria a ID = 0, enquanto o Dispatcher ID = 1
+    qntTarefasUsuario = 0;
+
+    task_create(&tarefaDispatcher, dispatcher_body, NULL);
+
+    /* Temporizador */
+    #ifdef DEBUG
+        printf ("ppos_init: Iniciando o temporizador do SO.\n");
+    #endif
+
+    /* CODIGO RETIRADO DO EXEMPLO PASSADO */
+
+    // registra a ação para o sinal de timer SIGALRM
+    action.sa_handler = tratadorTemporizador;
+    sigemptyset (&action.sa_mask) ;
+    action.sa_flags = 0 ;
+    if (sigaction (SIGALRM, &action, 0) < 0)
+    {
+        perror ("Erro em sigaction: ") ;
+        exit (1) ;
+    }
+
+    // ajusta valores do temporizador
+    timer.it_value.tv_usec = 100;          // primeiro disparo, em micro-segundos
+    timer.it_value.tv_sec  = 0;            // primeiro disparo, em segundos
+    timer.it_interval.tv_usec = 1000;      // disparos subsequentes, em micro-segundos
+    timer.it_interval.tv_sec  = 0;         // disparos subsequentes, em segundos
+
+    // arma o temporizador ITIMER_REAL (vide man setitimer)
+    if (setitimer (ITIMER_REAL, &timer, 0) < 0)
+    {
+        perror ("Erro em setitimer: ") ;
+        exit (1) ;
+    }    
+    
+    /* FIM DO CODIGO RETIRADO DO EXEMPLO PASSADO */
+
+    return;
 }
