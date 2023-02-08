@@ -1,0 +1,27 @@
+// Mihael Scofield de Azevedo - GRR20182621 - msa18
+
+Para executar basta rodar "$make", opções "$make debug", "$make clean" e "$make purge" 
+também estão disponíveis.
+
+Após executar o Make o programa estará disponível em ./exe-pingpong-mqueue
+
+Citando do P10 para frente, não senti a necessidade de utilizar a exclusão mútua, devido ao
+fato dos testes serem todos feitos por uma thread única. Embora eu tenha implementado uma
+função de preempção mais genérica utilizando a programação atômica quando estava 
+estudando o P11. Acreditei que usaria essas funções no P12 mas não vieram, ficam para o P13.
+
+Devido ao tempo, não consegui executar o jantar dos filosofos no P11, mas percebi que um
+buffer circular, como orientado pelo prof na especificação do P12, poderia resolver o problema.
+Pesquisando um pouco encontrei uma implementação classica de um buffer circular para troca de
+mensagens que utilizava tres semaforos, um focado no produtor, um no consumidor e um
+para garantir que as mensagens estejam nos "lugares" ou "blocos" corretos. 
+
+Tive muitos problemas com overflow de mensagens por nao entender o tamanho delas e o fato
+de que o buffer de lugares era quem deveria travar e fila, quase nao entreguei a tempo por conta disso. Talvez se a fila nao fosse generica nao teria encontrado esse problema, mas consegui
+rodar o teste do P12 e uma implementacao generica do jantar dos filosofos online com o codigo final.
+
+Tive problemas de entender que o controle do indice das mensagens tambem eram feitos atraves de mod (%), acabei gastando mais tempo do que gostaria na funcao que devolve o indice de uma mensagem (a primeira que eu implementei, alias), para depois perceber que era so pegar o ultimo indice.
+
+Sei que ja deveria ter falado do P9 no ultimo README, mas como nao entreguei ele, gostaria de citar o fato de que nao utilizar um ponteiro auxiliar no momento de fazer a troca da task de uma fila de prontas para o dormitorio me deu muita dor de cabeca, so consegui resolver o problema atraves de redundancia e uma solucao nao muito otimizada. O mesmo se repetiu no momento de trabalhar com indices no P12, mas por sorte consegui perceber que o erro do indice era so que eu nao estava incrementando o mesmo, economizou umas 20 linhas em cada funcao por descartar o "auxiliar" que eu achava que era o problema (por nao estar caminhando direito pelo buffer, acreditei ser perca de ponteiro). 
+
+Bem, foram todas as dificuldades que encontrei do P10 para frente, infelizmente nao pude ter uma solucao mais otimizada como nos trabalhos anteriores, mas fico satisfeito com o resultado.
